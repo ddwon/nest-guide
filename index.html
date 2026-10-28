@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="2027학년도 경기대학교 창의공과대학 선거운동본부 N:EST 신규 선본원 가이드">
+<meta property="og:type" content="website">
+<meta property="og:title" content="N:EST 선본원 가이드">
+<meta property="og:description" content="공대의 시선을 더 높은 하늘로, N:EST">
+<meta property="og:url" content="https://ddwon.github.io/nest-guide/">
+<meta property="og:image" content="https://ddwon.github.io/nest-guide/assets/nest-wordmark-mono.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/png" href="assets/nest-symbol-mono.png">
+<title>N:EST 선본원 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+/* 레이아웃: 흰 종이 위 한 줄 읽기 컬럼, 상단 고정 목차, 섹션마다 얇은 라벨 선 (로고 보드의 'LOGO CONCEPT ———' 형식)
+   모노크롬 로고에 맞춘 흰색 단일 테마: 뷰어 테마와 관계없이 항상 밝게 보입니다. */
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --paper: #f7f7f8;
+  --ink: #18181a;
+  --ink-soft: #5c5c62;
+  --line: #e2e2e5;
+  --accent: #26262a;
+  --accent-wash: #efeff1;
+  --stop: #b0413e;
+  --stop-wash: #fbefee;
+  --pending: #9a6d1e;
+  --pending-wash: #f6efe1;
+  --done: #a3a3a9;
+  --font-display: "Gowun Batang", "Nanum Myeongjo", "AppleMyungjo", serif;
+  --font-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.7;
+  word-break: keep-all; overflow-wrap: anywhere;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--bg);
+}
+.wrap {
+  max-width: 760px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; text-wrap: balance; margin: 0; line-height: 1.35; }
+p { margin: 0; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+/* ---------- 히어로 ---------- */
+.hero { padding-block: 48px 36px; text-align: center; }
+.eyebrow {
+  font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-soft);
+}
+.hero .logo { width: min(440px, 88%); margin: 28px auto 20px; display: block; }
+.slogan { font-family: var(--font-display); font-size: clamp(20px, 4.6vw, 28px); letter-spacing: 0.08em; }
+.hero .who { margin-top: 10px; color: var(--ink-soft); font-size: 14px; letter-spacing: 0.06em; }
+
+/* ---------- 목차 ---------- */
+.toc {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(8px); border-block: 1px solid var(--line);
+}
+.toc .wrap { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; scrollbar-width: none; }
+.toc .wrap::-webkit-scrollbar { display: none; }
+.toc a {
+  flex: none; text-decoration: none; color: var(--ink-soft); font-size: 13px; font-weight: 500;
+  padding: 5px 12px; border-radius: 999px; border: 1px solid transparent;
+}
+.toc a:hover { border-color: var(--line); color: var(--ink); }
+.toc a.stop { color: var(--stop); }
+
+/* ---------- 섹션 공통 ---------- */
+section { padding-block: 44px 8px; }
+.label {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 10px;
+}
+.label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+section h2 { font-size: clamp(22px, 5vw, 28px); margin-bottom: 8px; }
+.lead { color: var(--ink-soft); margin-bottom: 22px; }
+.tag {
+  display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+  padding: 1px 8px; border-radius: 999px; vertical-align: 2px; white-space: nowrap;
+}
+.tag.tbd { color: var(--pending); background: var(--pending-wash); }
+.tag.src { color: var(--ink-soft); background: var(--accent-wash); font-weight: 500; }
+.tag.must { color: var(--bg); background: var(--accent); }
+.note { font-size: 14px; color: var(--ink-soft); margin-top: 14px; }
+
+/* ---------- 이름 / 상징 ---------- */
+.name-split { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+.name-split div { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 14px; min-width: 0; }
+.name-split b { display: block; font-family: var(--font-display); font-size: 22px; color: var(--accent); }
+.name-split span { font-size: 14px; color: var(--ink-soft); }
+.symbols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.symbols div { text-align: center; padding: 10px 4px; min-width: 0; }
+.symbols b { display: block; font-family: var(--font-display); font-size: 17px; }
+.symbols span { font-size: 13px; color: var(--ink-soft); line-height: 1.5; display: block; margin-top: 4px; }
+.members { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.members span { font-size: 14px; padding: 3px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); }
+
+/* ---------- 체크리스트 ---------- */
+.checklist { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
+.checklist label {
+  display: flex; gap: 12px; align-items: center; cursor: pointer;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px;
+}
+.checklist input { width: 18px; height: 18px; accent-color: var(--accent); flex: none; margin: 0; }
+.checklist .t { min-width: 0; }
+.checklist input:checked + .t { color: var(--done); text-decoration: line-through; }
+.progress { font-size: 13px; color: var(--ink-soft); margin-top: 10px; font-variant-numeric: tabular-nums; }
+
+/* ---------- 타임라인 ---------- */
+.timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 76px; top: 8px; bottom: 8px; width: 1px; background: var(--line); }
+.timeline li { display: grid; grid-template-columns: 64px 1fr; gap: 25px; padding-block: 10px; position: relative; }
+.timeline li::before {
+  content: ""; position: absolute; left: 72px; top: 19px; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--accent);
+}
+.timeline .d { font-variant-numeric: tabular-nums; font-weight: 600; font-size: 14px; text-align: right; padding-top: 3px; color: var(--accent); }
+.timeline .d small { display: block; font-weight: 400; color: var(--ink-soft); font-size: 12px; }
+.timeline .c { min-width: 0; }
+.timeline .c b { font-size: 16px; }
+.timeline .c p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+.timeline li.past { opacity: 0.5; }
+.timeline li.past::before { background: var(--done); border-color: var(--done); }
+.timeline li.next .c {
+  background: var(--accent-wash); border-radius: 8px; padding: 6px 12px; margin: -6px -12px;
+}
+.timeline li.next::before { background: var(--accent); }
+.timeline .now { font-size: 11px; font-weight: 600; color: var(--bg); background: var(--accent); border-radius: 999px; padding: 1px 8px; margin-left: 6px; vertical-align: 2px; }
+.timeline li.alert .d { color: var(--stop); }
+.timeline li.alert::before { border-color: var(--stop); }
+
+/* ---------- 금지 ---------- */
+.stop-band { background: var(--stop-wash); margin-top: 44px; padding-block: 36px; }
+.stop-band section { padding-block: 0; }
+.stop-band .label { color: var(--stop); }
+.stop-band .label::after { background: color-mix(in srgb, var(--stop) 30%, transparent); }
+.strike {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 22px;
+  font-weight: 600; color: var(--stop);
+}
+.strike .cards { display: flex; gap: 4px; }
+.strike .cards i { width: 14px; height: 20px; border-radius: 2px; background: var(--stop); display: block; }
+.donts { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.donts li {
+  background: var(--bg); border-radius: 10px; padding: 14px 16px 14px 46px; position: relative;
+}
+.donts li::before {
+  content: ""; position: absolute; left: 16px; top: 19px; width: 16px; height: 16px; border-radius: 50%;
+  border: 2px solid var(--stop);
+  background: linear-gradient(45deg, transparent 44%, var(--stop) 44%, var(--stop) 56%, transparent 56%);
+}
+.donts b { display: block; }
+.donts p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; margin-top: 2px; }
+
+/* ---------- 접촉 금지 대상 ---------- */
+.orgs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.org { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+.org h3 { font-family: var(--font-body); font-size: 15px; font-weight: 600; }
+.org .who { font-size: 13px; color: var(--ink-soft); margin-top: 4px; line-height: 1.55; }
+.org .who em { font-style: normal; color: var(--stop); font-weight: 500; }
+.except {
+  margin-top: 12px; background: var(--accent-wash); border-radius: 10px; padding: 12px 16px; font-size: 14px;
+}
+
+/* ---------- 표 ---------- */
+.table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 14px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; letter-spacing: 0.08em; color: var(--ink-soft); font-weight: 500; background: var(--paper); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-weight: 600; white-space: nowrap; }
+td .num { font-variant-numeric: tabular-nums; }
+.rules-mini { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 6px; font-size: 14px; }
+.rules-mini li { padding-left: 18px; position: relative; }
+.rules-mini li::before { content: "※"; position: absolute; left: 0; color: var(--accent); }
+
+/* ---------- 선거운동원 ---------- */
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.fact { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+.fact .k { font-size: 12px; color: var(--ink-soft); letter-spacing: 0.06em; }
+.fact .v { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--accent); line-height: 1.3; margin-top: 2px; }
+.fact .s { font-size: 13px; color: var(--ink-soft); margin-top: 2px; line-height: 1.5; }
+
+/* ---------- 공약 ---------- */
+.pledges { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.pledge { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; min-width: 0; }
+.pledge h3 { font-size: 19px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.pledge h3 small { font-family: var(--font-body); font-size: 12px; font-weight: 500; color: var(--ink-soft); }
+.pledge ul { margin: 10px 0 0; padding-left: 18px; font-size: 14px; line-height: 1.6; display: grid; gap: 4px; }
+.pledge li::marker { color: var(--accent); }
+.debate { margin-top: 22px; }
+.debate h3 { font-size: 19px; margin-bottom: 4px; }
+.map { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; }
+.map div { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; text-align: center; background: var(--paper); min-width: 0; }
+.map .from { font-size: 13px; color: var(--ink-soft); }
+.map .arrow { color: var(--accent); font-size: 12px; }
+.map .to { font-weight: 600; }
+
+/* ---------- 규칙 ---------- */
+.rules { display: grid; gap: 10px; }
+.rule { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; grid-template-columns: 120px 1fr; gap: 16px; }
+.rule h3 { font-family: var(--font-body); font-size: 15px; font-weight: 600; }
+.rule .body { min-width: 0; font-size: 15px; }
+.rule .body p + p { margin-top: 6px; }
+.money { display: flex; gap: 18px; flex-wrap: wrap; }
+.money span { font-variant-numeric: tabular-nums; }
+.money b { font-family: var(--font-display); font-size: 20px; color: var(--accent); }
+
+/* ---------- 용어 ---------- */
+.terms { margin: 0; display: grid; grid-template-columns: 140px 1fr; border-top: 1px solid var(--line); }
+.terms dt, .terms dd { margin: 0; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+.terms dt { font-weight: 600; padding-right: 12px; }
+.terms dd { color: var(--ink-soft); min-width: 0; }
+
+/* ---------- 푸터 ---------- */
+footer { padding-block: 48px 56px; text-align: center; }
+footer .ask {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 22px 20px; text-align: left;
+}
+footer .ask h3 { font-size: 19px; margin-bottom: 6px; }
+footer .ask p { font-size: 15px; color: var(--ink-soft); }
+footer .symbol { width: 72px; margin: 36px auto 10px; display: block; }
+footer .sign { font-size: 11px; letter-spacing: 0.3em; color: var(--ink-soft); }
+footer .updated { font-size: 12px; color: var(--ink-soft); margin-top: 6px; }
+
+@media (max-width: 600px) {
+  .symbols { grid-template-columns: repeat(2, 1fr); }
+  .orgs, .pledges { grid-template-columns: 1fr; }
+  .facts { grid-template-columns: 1fr; }
+  .map { grid-template-columns: repeat(2, 1fr); }
+  .rule { grid-template-columns: 1fr; gap: 6px; }
+  .terms { grid-template-columns: 1fr; }
+  .terms dt { padding-bottom: 0; border-bottom: 0; }
+  .terms dd { padding-top: 2px; }
+  .name-split { grid-template-columns: 1fr; }
+  .name-split div { display: flex; align-items: baseline; gap: 12px; }
+  .name-split b { font-size: 19px; flex: none; width: 52px; }
+}
+
+/* 기본 리셋 */
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Kyonggi University · College of Engineering</p>
+    <img class="logo" src="assets/nest-wordmark-mono.png" alt="N:EST 로고">
+    <p class="slogan">공대의 시선을 더 높은 하늘로, N:EST</p>
+    <p class="who">2027학년도 창의공과대학 선거운동본부 · 신규 선본원 가이드</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="목차">
+  <div class="wrap">
+    <a href="#about">N:EST 소개</a>
+    <a href="#checklist">체크리스트</a>
+    <a href="#schedule">일정</a>
+    <a href="#donts" class="stop">금지 사항</a>
+    <a href="#contact">접촉 금지 대상</a>
+    <a href="#campaign">선거운동원</a>
+    <a href="#materials">선전물</a>
+    <a href="#pledges">공약·토론회</a>
+    <a href="#rules">선본 규칙</a>
+    <a href="#terms">용어</a>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+
+    <section id="about">
+      <p class="label">About N:EST</p>
+      <h2>둥지에서 시작해 더 높이</h2>
+      <p class="lead">N:EST는 학우를 품는 둥지(Nest)이자, 한 사람 한 사람이 최고를 향해 성장하도록 돕겠다는 뜻입니다.</p>
+      <div class="name-split">
+        <div><b>Nest</b><span>둥지. 학우들이 머물고 비상할 수 있도록 받쳐 주는 곳입니다.</span></div>
+        <div><b>N</b><span>자연수 N. 수많은 학우 한 명 한 명을 뜻합니다.</span></div>
+        <div><b>-EST</b><span>최상급. 최고를 향한 성장을 뜻합니다.</span></div>
+      </div>
+      <div class="symbols">
+        <div><b>둥지</b><span>학우들을 포용하고 지지하는 학생회</span></div>
+        <div><b>가능성</b><span>한 사람 한 사람의 빛나는 가능성</span></div>
+        <div><b>성장과 도약</b><span>함께 더 높은 곳으로 나아가는 변화</span></div>
+        <div><b>연결</b><span>서로를 이어 만드는 더 큰 공과대학</span></div>
+      </div>
+      <p class="note" style="margin-top:22px">함께하는 사람들 <span class="tag tbd">국 배정 미정</span></p>
+      <div class="members">
+        <span>김동원</span><span>손지우</span><span>양주홍</span><span>최이현</span><span>도현종</span>
+        <span>모다연</span><span>유은서</span><span>이규란</span><span>김태현</span><span>임재인</span>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <p class="label">First Week</p>
+      <h2>첫 주 체크리스트</h2>
+      <ul class="checklist">
+        <li><label><input type="checkbox" id="c1"><span class="t">이 가이드 끝까지 읽기</span></label></li>
+        <li><label><input type="checkbox" id="c3"><span class="t">11/2 회의 일정 비워 두기</span></label></li>
+        <li><label><input type="checkbox" id="c4"><span class="t">내 단체 채팅방 정리하기</span></label></li>
+        <li><label><input type="checkbox" id="c5"><span class="t">내 주변의 접촉 금지 대상 확인하기</span></label></li>
+        <li><label><input type="checkbox" id="c6"><span class="t">개인 SNS에 선거 관련 글 올리지 않기</span></label></li>
+        <li><label><input type="checkbox" id="c10"><span class="t">각자 선거운동원 2~3명 구하기</span></label></li>
+        <li><label><input type="checkbox" id="c7"><span class="t">11/8 선전물 부착 일정 비워 두기</span></label></li>
+        <li><label><input type="checkbox" id="c8"><span class="t">준비 비용 확인하기</span></label></li>
+        <li><label><input type="checkbox" id="c9"><span class="t">국이 정해지면 내 국의 정책토론회 파트 공부하기</span></label></li>
+      </ul>
+      <p class="progress" id="progress" aria-live="polite"></p>
+    </section>
+
+    <section id="schedule">
+      <p class="label">Schedule</p>
+      <h2>선거 일정</h2>
+      <ol class="timeline" id="timeline" style="margin-top:14px">
+        <li data-end="2026-10-12"><div class="d">10/12<small>월</small></div><div class="c"><b>제1차 선본 회의</b><p>선본 이름 N:EST 1차 안과 공약 초안을 논의했습니다.</p></div></li>
+        <li data-end="2026-10-26"><div class="d">10/26<small>월</small></div><div class="c"><b>제2차 선본 회의</b><p>N:EST와 슬로건을 확정하고, 정책토론회 국 배정 원칙을 정했습니다.</p></div></li>
+        <li data-end="2026-11-02"><div class="d">11/2<small>월</small></div><div class="c"><b>선본 회의 (길게)</b><p>이 회의 전까지는 추가 회의가 없습니다.</p></div></li>
+        <li data-end="2026-11-03" class="alert"><div class="d">11/3<small>화</small></div><div class="c"><b>후보 등록 시작</b><p>이날부터 접촉 금지 규칙을 특히 조심해야 합니다. 후보 등록 전날부터는 정·부후보만 추천서를 받을 수 있습니다.</p></div></li>
+        <li data-end="2026-11-04"><div class="d">11/4<small>수</small></div><div class="c"><b>후보 등록 마감 · 선본장 1차 회의 17:30</b><p>중선위가 선본 색, 선본실, 지시사항을 정합니다. 공약은 이날 제출한 내용에서 더 이상 수정할 수 없습니다.</p></div></li>
+        <li data-end="2026-11-06"><div class="d">11/5–6<small>목–금</small></div><div class="c"><b>선전물 승인</b><p>이 전까지 선전물이 모두 완성되어야 합니다. 화장실 포스터 규격(A5)이 맞는지 반드시 확인합니다.</p></div></li>
+        <li data-end="2026-11-08"><div class="d">11/8<small>일</small></div><div class="c"><b>선전물 부착 <span class="tag must">전원 참석</span></b><p>부착하면서 잘못 붙은 곳이 없는지 함께 확인합니다. 투명 테이프만 사용합니다.</p></div></li>
+        <li data-end="2026-11-20" class="alert"><div class="d">11/9–20<small>2주</small></div><div class="c"><b>선거운동 기간</b><p>가장 조심해야 하는 기간입니다. 과방 출입은 금지이며 선본실만 사용합니다. 유세 시간은 <span class="tag tbd">미정</span></p></div></li>
+        <li data-end="2026-11-11"><div class="d">11/10–11<small>화–수</small></div><div class="c"><b>선거유세</b><p>정·부후보만 진행합니다.</p></div></li>
+        <li data-end="2026-11-17"><div class="d">11/16<small>또는 17</small></div><div class="c"><b>정책토론회 <span class="tag tbd">날짜 미정</span></b><p>그 전까지 국별로 예상 질문을 최대한 많이 준비합니다.</p></div></li>
+        <li data-end="2026-11-25"><div class="d">11/23–25<small>월–수</small></div><div class="c"><b>본투표</b><p>투표율이 50%를 넘지 못하면 낙선이므로 투표 독려 인원이 필요합니다. 부착한 선전물은 투표 기간 안에 직접 제거합니다.</p></div></li>
+      </ol>
+    </section>
+
+  </div>
+
+  <div class="stop-band" id="donts">
+    <div class="wrap">
+      <section>
+        <p class="label">Never</p>
+        <h2>절대 하면 안 되는 것</h2>
+        <p class="lead">한 명의 실수가 선본 전체의 경고가 됩니다.</p>
+        <div class="strike"><span class="cards" aria-hidden="true"><i></i><i></i><i></i></span>경고 3회 시 후보 자격이 박탈됩니다</div>
+        <ul class="donts">
+          <li><b>공로장학금 받는 간부와 접촉하지 않기</b><p>대화는 물론 인사도 금지입니다. 해당 대상은 아래 별첨 1을 참고하십시오. <span class="tag src">중선위 지시 1</span></p></li>
+          <li><b>다른 선본 사람과 접촉하지 않기</b><p>친한 사이여도 선거가 끝날 때까지는 거리를 둡니다. <span class="tag src">중선위 지시 1</span></p></li>
+          <li><b>자유전공은 국장 라인까지 접촉하지 않기</b><p>자유전공 쪽은 범위가 더 넓습니다. <span class="tag src">선본 회의</span></p></li>
+          <li><b>공로장학금 간부가 있는 단톡방에서 메신저 기능 쓰지 않기</b><p>대화를 포함한 모든 메신저 기능이 해당됩니다. 본인이 직책을 맡은 방은 나가야 합니다. ROTC, 생계, 동거, 학업처럼 미리 알 수 있는 사정은 협조전을 먼저 제출하고, 불가피한 사정은 사후에 협조전을 제출합니다. <span class="tag src">중선위 지시 3</span></p></li>
+          <li><b>개인 SNS로 선거운동하지 않기</b><p>승인된 계정에서만 가능합니다. 후보자도 마찬가지입니다. <span class="tag src">중선위 지시 4</span></p></li>
+          <li><b>추천서를 대신 받지 않기</b><p>후보 등록 전날부터 학교 안에서 추천서는 정·부후보만 받을 수 있습니다. 어길 경우 무효 처리됩니다. <span class="tag src">중선위 지시 2</span></p></li>
+          <li><b>정책토론회에서 질문을 사주하지 않기</b><p>신문방송사 주최 토론회에서 다른 사람에게 질문을 부탁하는 것도 금지입니다. <span class="tag src">중선위 지시 5</span></p></li>
+          <li><b>선거운동 기간에 과방 가지 않기</b><p>대신 선본실을 사용합니다. 우리 선본만 사용할 수 있으며, 전자과 과방 중 하나로 배정될 예정입니다. <span class="tag src">선본 회의</span></p></li>
+          <li><b>승인받지 않은 선전물 쓰지 않기</b><p>규정에 없는 선전물은 제작할 수 없고, 승인된 선전물에 물품을 덧붙이는 등 변형하는 것도 금지입니다. <span class="tag src">선전물 규정</span></p></li>
+          <li><b>등록 후 공약 바꾸지 않기</b><p>선거운동 중 공약을 수정하면 변칙적 선거운동으로 처벌받습니다. 자료집에서 일부를 제외하는 것은 허용됩니다. <span class="tag src">중선위 유의사항 5</span></p></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <section id="contact">
+      <p class="label">Do Not Contact</p>
+      <h2>접촉 금지 대상</h2>
+      <p class="lead">중선위 별첨 1의 미사퇴 간부(공로장학금 수여자)입니다. 붉은 글씨 직책은 접촉 금지이며, 같은 단체의 나머지 인원(별첨 2)과도 대화를 지양하는 것이 원칙입니다.</p>
+      <div class="orgs">
+        <div class="org"><h3>총학생회</h3><p class="who"><em>회장, 부회장, 국장, 차장</em></p></div>
+        <div class="org"><h3>단과대학 학생회</h3><p class="who">단대학생회 · 예술체육대학 · 관광문화대학<br><em>회장, 부회장, 국장</em></p></div>
+        <div class="org"><h3>학과(전공) 학생회</h3><p class="who"><em>회장, 부회장</em></p></div>
+        <div class="org"><h3>동아리연합회</h3><p class="who">수원 · 서울<br><em>회장, 부회장, 국장</em></p></div>
+        <div class="org"><h3>응원단</h3><p class="who"><em>단장, 부단장, 부장</em></p></div>
+        <div class="org"><h3>사생자치위원회</h3><p class="who"><em>회장, 부회장, 국장, 부장, 층장</em></p></div>
+        <div class="org"><h3>학군단</h3><p class="who">수원 + 서울<br><em>대대장, 장교, 중대장</em></p></div>
+        <div class="org"><h3>신문방송사</h3><p class="who">의장단 <em>의장, 부의장</em><br>방송기획국 · 신문편집국 · 영자신문편집국 · 웹진운영국<br><em>국장, 부장, 정기자, 수습기자</em></p></div>
+      </div>
+      <p class="except"><b>예외:</b> 학과 학생회 집행부는 별첨 2(대화 지양 대상)에서 제외됩니다. 단, 학과 학생회 회장·부회장은 별첨 1에 해당하므로 접촉 금지입니다.</p>
+    </section>
+
+    <section id="campaign">
+      <p class="label">Campaigners</p>
+      <h2>선거운동원이 하는 일</h2>
+      <p class="lead">슬로건을 외치며 유세하는 것만 하면 됩니다. 11/9부터 20일까지 2주 동안만 지켜 주시면 됩니다. 인원은 많을수록 좋습니다.</p>
+      <div class="facts">
+        <div class="fact"><p class="k">동시 운동 가능 인원</p><p class="v">10명</p><p class="s">한 공간에는 5명까지입니다.</p></div>
+        <div class="fact"><p class="k">외칠 문구</p><p class="v" style="font-size:17px">공대의 시선을<br>더 높은 하늘로, N:EST</p></div>
+        <div class="fact"><p class="k">유세 시간 <span class="tag tbd">미정</span></p><p class="v" style="font-size:17px">아침 · 점심 · 저녁</p><p class="s">아침(8:00–8:50)이 필요 없으면 점심·저녁에만 진행합니다.</p></div>
+      </div>
+    </section>
+
+    <section id="materials">
+      <p class="label">Campaign Materials</p>
+      <h2>선전물 규정</h2>
+      <p class="lead">우리는 단과대학 선본이므로 단과대학 기준만 정리했습니다. 모든 선전물은 중선위 사전 승인을 받은 뒤 지정된 기간과 장소에서만 게시하거나 배포할 수 있습니다.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>종류</th><th>크기</th><th>수량·횟수</th><th>참고</th></tr></thead>
+          <tbody>
+            <tr><td>현수막</td><td class="num">가로 8m × 세로 1m 이하</td><td class="num">3개 이하</td><td>덧대는 부분 30cm 이하, 중선위 지정 장소</td></tr>
+            <tr><td>유인물·리플렛</td><td class="num">A4 이하</td><td class="num">하루 3종 이하</td><td></td></tr>
+            <tr><td>포스터</td><td class="num">A2 이하</td><td class="num">30장 이하</td><td>소속 캠퍼스 기준</td></tr>
+            <tr><td>선전판</td><td class="num">180 × 100cm 이하</td><td class="num">1개</td><td>해당 강의동 앞</td></tr>
+            <tr><td>화장실 선전물</td><td class="num">A5</td><td class="num">1종</td><td>승인 시 규격 확인</td></tr>
+            <tr><td>정책 자료집</td><td>약력 포함 3쪽 이하</td><td></td><td>등록 공약 외 내용 금지, 일부 제외는 가능</td></tr>
+            <tr><td>SNS 게시물</td><td>유인물 내용의 jpg</td><td class="num">1회</td><td>중선위 인스타그램에 게시</td></tr>
+            <tr><td>피켓</td><td class="num">A2</td><td></td><td>손잡이 1m 이하</td></tr>
+            <tr><td>선전물 게시대</td><td class="num">가로 80cm · 높이 150cm 이하</td><td class="num">1개</td><td>자료집·유인물 게시용</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="rules-mini">
+        <li>모든 유인물, 선전물, 대자보는 <b>투명 테이프</b>로 부착합니다.</li>
+        <li>부착한 선전물은 <b>투표 기간 안에</b> 직접 제거합니다.</li>
+        <li>공약, 정책 자료집, 정·부후보 약력은 HWP 또는 HWPX 파일로 등록 마감까지 중선위 메일(hirank1@kyonggi.ac.kr)로 제출합니다.</li>
+      </ul>
+    </section>
+
+    <section id="pledges">
+      <p class="label">Pledges</p>
+      <h2>공약 한눈에 보기 <span class="tag tbd">등록 전 초안</span></h2>
+      <p class="lead">교육·복지·문화·소통 네 분야입니다. 후보 등록 때 확정되며, 이후에는 수정할 수 없습니다.</p>
+      <div class="pledges">
+        <div class="pledge"><h3>교육 <small>토론회 담당 · 기획국</small></h3>
+          <ul>
+            <li>학과별 동아리 설명회(학술콘서트)와 취업 잘한 선배 특강</li>
+            <li>캠퍼스 투어</li>
+            <li>창의공학부 대상 학과 자료집 제작</li>
+            <li>피어 튜터링 매칭(선후배 매칭)</li>
+          </ul>
+        </div>
+        <div class="pledge"><h3>복지 <small>토론회 담당 · 복지국</small></h3>
+          <ul>
+            <li>제휴 분야 확장과 제휴 지도 제작</li>
+            <li>공대 개강 키트</li>
+            <li>무료 프린트</li>
+            <li>물품 대여 사업 위치와 수량 확대</li>
+          </ul>
+        </div>
+        <div class="pledge"><h3>문화 <small>토론회 담당 · 문화국</small></h3>
+          <ul>
+            <li>강철체전(런닝맨)과 강철제</li>
+            <li>봉사단 운영(농활 등)</li>
+            <li>타 단과대학 협업: 일일호프, 거리 부스, e스포츠</li>
+            <li>생일자 이벤트</li>
+            <li>창의공학부 MT(창공, 자전)</li>
+          </ul>
+        </div>
+        <div class="pledge"><h3>소통 <small>토론회 담당 · 사무·홍보국</small></h3>
+          <ul>
+            <li>창의공과대학 홈페이지 개설</li>
+            <li>회계 장부 공개</li>
+            <li>짝선짝후</li>
+            <li>매월 대외활동·공모전·장학금·인턴 정보 카드뉴스 배포</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note">보류: 학생 의견 반영 공약 이행, 공과대학 사물함, 공대인의 밤, 공대 강의동 시험기간 연장, 공대 마스코트 공모전, 커피 자판기</p>
+
+      <div class="debate">
+        <h3>정책토론회 국 배정</h3>
+        <p class="lead" style="margin:0">국이 정해지면 소속 국이 맡은 분야를 확실히 숙지하고, 나올 만한 질문을 미리 생각해 두십시오. <span class="tag tbd">11/16 또는 17</span></p>
+        <div class="map">
+          <div><p class="from">교육</p><p class="arrow">↓</p><p class="to">기획국</p></div>
+          <div><p class="from">복지</p><p class="arrow">↓</p><p class="to">복지국</p></div>
+          <div><p class="from">문화</p><p class="arrow">↓</p><p class="to">문화국</p></div>
+          <div><p class="from">소통</p><p class="arrow">↓</p><p class="to">사무·홍보국</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules">
+      <p class="label">House Rules</p>
+      <h2>선본 규칙</h2>
+      <p class="lead">우리 선본 내부의 약속입니다.</p>
+      <div class="rules">
+        <div class="rule"><h3>호칭</h3><div class="body"><p>공적인 자리에서는 존댓말을 쓰고 서로 직책으로 호칭합니다.</p></div></div>
+        <div class="rule"><h3>준비 비용</h3><div class="body">
+          <p>선전물, 의류, 외주 등에 드는 비용을 직책에 따라 차등 분담합니다.</p>
+          <p class="money"><span>국장 <b>100,000</b>원</span><span>부장 <b>50,000</b>원</span></p>
+        </div></div>
+        <div class="rule"><h3>결석</h3><div class="body">
+          <p>사유를 제출하면 불이익이 없습니다. 협조전, 다른 회의, 병원 진단서 등이 사유로 인정됩니다.</p>
+          <p>무단 불참 3회 시 불이익이 있습니다. <span class="tag tbd">내용 미정</span></p>
+        </div></div>
+        <div class="rule"><h3>회의</h3><div class="body"><p>보통 월요일 18:30, 카페 공간1993 지하실에서 진행합니다. 다음 회의는 11/2입니다.</p></div></div>
+      </div>
+    </section>
+
+    <section id="terms">
+      <p class="label">Glossary</p>
+      <h2>처음 들으면 헷갈리는 말</h2>
+      <dl class="terms">
+        <dt>선본</dt><dd>선거운동본부입니다. 후보와 함께 선거를 준비하는 우리 팀입니다.</dd>
+        <dt>중선위</dt><dd>경기대학교 중앙선거관리위원회입니다. 선거 규칙을 정하고 감독합니다. 중선위 문의는 선본장만 할 수 있습니다.</dd>
+        <dt>정후보 · 부후보</dt><dd>회장 후보와 부회장 후보입니다.</dd>
+        <dt>국 · 부</dt><dd>기획, 복지, 문화, 홍보, 사무 같은 업무 단위입니다. 국장과 부장이 이끕니다.</dd>
+        <dt>미사퇴 간부</dt><dd>공로장학금을 받는 학생 자치기구 간부입니다. 선본은 이들과 접촉할 수 없습니다.</dd>
+        <dt>협조전</dt><dd>불가피한 사정을 공식적으로 알리는 문서입니다. 결석 사유나 단톡방 예외를 인정받을 때 사용합니다.</dd>
+        <dt>선본실</dt><dd>우리 선본만 사용하는 공간입니다. 선거운동 기간에는 과방 대신 이곳을 사용합니다.</dd>
+        <dt>선전물 승인</dt><dd>제작한 선전물을 부착하기 전에 중선위가 규격과 내용을 검사하는 절차입니다.</dd>
+        <dt>본투표</dt><dd>학우들이 실제로 투표하는 기간입니다. 투표율이 50%를 넘어야 당선될 수 있습니다.</dd>
+      </dl>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ask">
+      <h3>궁금한 점이 생기면</h3>
+      <p>혼자 판단하지 말고 선본 단톡방에 질문해 주십시오. 특히 "이 사람과 대화해도 되나?" 싶을 때는 일단 피하고 먼저 물어보는 것이 안전합니다.</p>
+    </div>
+    <img class="symbol" src="assets/nest-symbol-mono.png" alt="">
+    <p class="sign">N:EST · TOGETHER · HIGHER · FURTHER</p>
+    <p class="updated">2026년 10월 28일 기준 · 1·2차 선본 회의와 중선위 공지 반영</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // 체크리스트: 이 기기에만 저장
+  var KEY = "nest-guide-checklist";
+  var boxes = Array.prototype.slice.call(document.querySelectorAll(".checklist input"));
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) {}
+  var out = document.getElementById("progress");
+  function render() {
+    var n = boxes.filter(function (b) { return b.checked; }).length;
+    out.textContent = n === boxes.length ? "모두 완료했습니다." : boxes.length + "개 중 " + n + "개 완료";
+  }
+  boxes.forEach(function (b) {
+    b.checked = !!saved[b.id];
+    b.addEventListener("change", function () {
+      saved[b.id] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+      render();
+    });
+  });
+  render();
+
+  // 일정: 지난 일정은 흐리게, 다음 일정은 강조
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  var items = document.querySelectorAll("#timeline li");
+  var marked = false;
+  items.forEach(function (li) {
+    var end = new Date(li.getAttribute("data-end") + "T00:00:00");
+    if (end < today) { li.classList.add("past"); return; }
+    if (!marked) {
+      marked = true;
+      li.classList.add("next");
+      var b = li.querySelector(".c b");
+      var s = document.createElement("span");
+      s.className = "now"; s.textContent = "다음";
+      b.appendChild(s);
+    }
+  });
+})();
+</script>
+</body>
+</html>
